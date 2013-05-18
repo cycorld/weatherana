@@ -9,7 +9,7 @@ import android.content.Intent;
 public class SplashActivity extends Activity {
 
         //how long until we go to the next activity
-        protected int _splashTime = 3000; 
+        protected int _splashTime = 4000; 
 
         private Thread splashTread;
 

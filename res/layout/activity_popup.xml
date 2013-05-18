@@ -6,58 +6,32 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Popup" >
+    tools:context=".PopupActivity" >
+
     <Button
-        android:id="@+id/stop"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onStopClicked"
-        android:text="알람끄기" />
-    <ImageView
-        android:id="@+id/splash_image"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:scaleType="fitCenter"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Button" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_below="@+id/button1"
         android:src="@drawable/popup" />
 
-    <TextView
-        android:id="@+id/timer_text"
+    <Button
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/pause"
-        android:layout_centerHorizontal="true"
-        android:text="좋은 아침입니다~"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/pause"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/splash_image"
-        android:layout_alignParentTop="true"
-        android:onClick="onPauseClicked"
-        android:text="5분만 더 잘래요ㅠ" />
-
-    <FrameLayout
-    android:id="@+id/fullscreen_custom_content"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FF000000"/>
-
-<FrameLayout
-    android:id="@+id/main_content"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1" >
-
-    <WebView
-        android:id="@+id/webView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
-</FrameLayout>
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="14dp"
+        android:layout_marginLeft="32dp"
+        android:text="Button" />
 
 </RelativeLayout>

@@ -9,7 +9,7 @@
         android:layout_height = "fill_parent"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/splash_image"
+        android:src="@drawable/weatherana_splash"
         />
     
     
