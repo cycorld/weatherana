@@ -1,4 +1,4 @@
-package net.likelion.weatheralarm;
+	package net.likelion.weatheralarm;
 
 import android.os.Bundle;
 import android.view.MotionEvent;

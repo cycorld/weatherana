@@ -162,7 +162,10 @@ public class MainActivity extends Activity {
 		int SECS = 1000;
 	    int MINS = 60 * SECS;
 	    if(pref.getInt("alarmSet", -1) == 1) {
-	    	am.setRepeating(AlarmManager.RTC_WAKEUP, set_time,  24 * 60 * MINS, sender);	
+	    	if(System.currentTimeMillis() < set_time)	// 오늘 이전 시간 설정시 한번 실행되는 기능 제 (테스트 필요)
+	    		am.setRepeating(AlarmManager.RTC_WAKEUP, set_time,  24 * 60 * MINS, sender);
+	    	else
+	    		am.setRepeating(AlarmManager.RTC_WAKEUP, set_time + 24 * 60 * MINS, 24 * 60 * MINS, sender);
 	    } else if(pref.getInt("alarmSet", -1) == 0) {
 	    	am.cancel(sender);
 	    	sender.cancel();
