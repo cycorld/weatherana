@@ -1,5 +1,10 @@
 package net.likelion.weatheralarm;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
@@ -52,6 +57,19 @@ public class Popup extends Activity {
 	        }  
 	    };  
 		Context context = getApplicationContext();
+		
+		try {
+			URL url = new URL("http://choiyongchol.com/weatheralarm/data/source.xml");
+			InputStream is = url.openStream();
+			
+		} catch (MalformedURLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		AudioManager am = (AudioManager) getApplicationContext()
 				.getSystemService(Context.AUDIO_SERVICE);
 		am.setStreamVolume(AudioManager.STREAM_MUSIC,
