@@ -21,7 +21,7 @@
         android:layout_alignBaseline="@+id/play_btn"
         android:layout_alignBottom="@+id/play_btn"
         android:layout_alignLeft="@+id/intro_txt"
-        android:text="알람 미리듣기"
+        android:text="@string/play_text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ToggleButton
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:text="AlarmToggle"
+        android:text="@string/alarmtoggle"
         android:onClick="onAlarmToggleClicked" />
 
     <TextView
@@ -40,7 +40,7 @@
         android:layout_alignBaseline="@+id/alarmtoggle"
         android:layout_alignBottom="@+id/alarmtoggle"
         android:layout_alignLeft="@+id/intro_txt"
-        android:text="알람 켜기/끄기"
+        android:text="@string/alarmtoggle_text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
@@ -50,18 +50,19 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/alarmtoggle"
         android:layout_marginTop="24dp"
-        android:text="미리듣기"
+        android:text="@string/play_text"
         android:onClick="onPreplayClicked" />
 
     <Button
         android:id="@+id/update_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/play_text"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/play_btn"
         android:layout_marginTop="24dp"
-        android:text="정보보기"
-        android:onClick="onUpdateClicked" />
+        android:onClick="onUpdateClicked"
+        android:text="@string/info_btn_text" />
 
     <Button
         android:id="@+id/set_time"
@@ -71,7 +72,7 @@
         android:layout_alignRight="@+id/alarmtoggle"
         android:layout_marginBottom="34dp"
         android:onClick="onSetTimeClicked"
-        android:text="시간저장" />
+        android:text="@string/set_time_text" />
 
     <TimePicker
         android:id="@+id/timePicker"

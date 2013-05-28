@@ -10,5 +10,14 @@
     <string name="title_activity_download">DownloadActivity</string>
     <string name="downloading_text">알람 파일을 다운로드 중입니다...</string>
     <string name="title_activity_info">InfoActivity</string>
+    <string name="play_text">알람 미리듣기</string>
+    <string name="alarmtoggle">Alarm Toggle</string>
+    <string name="alarmtoggle_text">알람 켜기/끄기</string>
+    <string name="info_btn_text">앱 정보 보기</string>
+    <string name="set_time_text">시간저장</string>
+    <string name="snooze_btn_text">5분만 더 잘래요</string>
+    <string name="alarm_stop_text">알람 끄기</string>
+    
+    
 
 </resources>
