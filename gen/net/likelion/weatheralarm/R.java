@@ -28,18 +28,19 @@ public final class R {
         public static final int weatherana_splash=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000c;
+        public static final int action_settings=0x7f09000d;
         public static final int alarmtoggle=0x7f090004;
         public static final int alarmtoggle_text=0x7f090005;
-        public static final int button1=0x7f090009;
-        public static final int button2=0x7f09000a;
         public static final int imageView1=0x7f090000;
         public static final int intro_txt=0x7f090001;
         public static final int play_btn=0x7f090003;
         public static final int play_text=0x7f090002;
         public static final int set_time=0x7f090007;
-        public static final int splash_image=0x7f09000b;
+        public static final int snooze_btn=0x7f09000a;
+        public static final int splash_image=0x7f09000c;
+        public static final int stop_btn=0x7f09000b;
         public static final int timePicker=0x7f090008;
+        public static final int timer_text=0x7f090009;
         public static final int update_btn=0x7f090006;
     }
     public static final class layout {
@@ -69,6 +70,7 @@ public final class R {
         public static final int play_text=0x7f060009;
         public static final int set_time_text=0x7f06000d;
         public static final int snooze_btn_text=0x7f06000e;
+        public static final int timer_string=0x7f060010;
         public static final int title_activity_download=0x7f060006;
         public static final int title_activity_info=0x7f060008;
         public static final int title_activity_main=0x7f060003;

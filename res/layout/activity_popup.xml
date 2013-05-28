@@ -8,30 +8,42 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".PopupActivity" >
 
+    <TextView
+        android:id="@+id/timer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/snooze_btn"
+        android:layout_alignRight="@+id/snooze_btn"
+        android:layout_below="@+id/snooze_btn"
+        android:text="@string/timer_string"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/snooze_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/imageView1"
+        android:onClick="onSnoozeClicked"
         android:text="@string/snooze_btn_text" />
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_below="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:src="@drawable/popup" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/stop_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/imageView1"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="14dp"
-        android:layout_marginLeft="32dp"
+        android:layout_alignRight="@+id/imageView1"
+        android:layout_below="@+id/imageView1"
+        android:onClick="onStopClicked"
         android:text="@string/alarm_stop_text" />
 
 </RelativeLayout>

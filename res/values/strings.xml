@@ -17,7 +17,7 @@
     <string name="set_time_text">시간저장</string>
     <string name="snooze_btn_text">5분만 더 잘래요</string>
     <string name="alarm_stop_text">알람 끄기</string>
-    
+	<string name="timer_string">좋은 아침입니다~</string>
     
 
 </resources>
