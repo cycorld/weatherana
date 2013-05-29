@@ -133,8 +133,17 @@ public class MainActivity extends Activity {
     	edit.putInt("alarmSet", 1);
     	edit.commit();	    
 		alarmSet();
-
-
+	}
+	public void onWeatherViewClicked(View view) {
+		Context context = getApplicationContext();
+		
+		Intent i = new Intent( context, WeatherInfoActivity.class );
+		PendingIntent pi = PendingIntent.getActivity(context, 0, i, PendingIntent.FLAG_ONE_SHOT);
+		try {
+		          pi.send();
+		} catch (CanceledException e) {
+		          e.printStackTrace();
+		}
 	}
 	public void alarmSet() throws ParseException {
 		TimePicker tp = (TimePicker) findViewById(R.id.timePicker);

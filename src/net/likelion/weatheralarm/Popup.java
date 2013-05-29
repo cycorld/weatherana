@@ -57,10 +57,10 @@ public class Popup extends Activity {
 	        }  
 	    };  
 		Context context = getApplicationContext();
-		
+		/*
 		try {
-			URL url = new URL("http://choiyongchol.com/weatheralarm/data/source.xml");
-			InputStream is = url.openStream();
+			//URL url = new URL("http://choiyongchol.com/weatheralarm/data/source.xml");
+			//InputStream is = url.openStream();
 			
 		} catch (MalformedURLException e1) {
 			// TODO Auto-generated catch block
@@ -69,7 +69,7 @@ public class Popup extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		*/
 		AudioManager am = (AudioManager) getApplicationContext()
 				.getSystemService(Context.AUDIO_SERVICE);
 		am.setStreamVolume(AudioManager.STREAM_MUSIC,

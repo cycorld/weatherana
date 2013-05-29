@@ -13,7 +13,7 @@
         android:id="@+id/intro_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:text="@string/set_time_info_text" />
 
     <TextView
         android:id="@+id/play_text"
@@ -29,10 +29,11 @@
         android:id="@+id/alarmtoggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/play_btn"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:text="@string/alarmtoggle"
-        android:onClick="onAlarmToggleClicked" />
+        android:onClick="onAlarmToggleClicked"
+        android:text="@string/alarmtoggle" />
 
     <TextView
         android:id="@+id/alarmtoggle_text"
@@ -81,5 +82,15 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/intro_txt"
         android:layout_below="@+id/intro_txt" />
+
+    <Button
+        android:id="@+id/weather_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/update_btn"
+        android:layout_alignRight="@+id/update_btn"
+        android:layout_below="@+id/update_btn"
+        android:onClick="onWeatherViewClicked"
+        android:text="@string/weather_btn_text" />
 
 </RelativeLayout>

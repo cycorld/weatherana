@@ -46,6 +46,14 @@
             android:label="@string/title_activity_info"
             android:theme="@android:style/Theme.Holo.Dialog" >
         </activity>
+        <activity
+            android:name="net.likelion.weatheralarm.WeatherInfoActivity"
+            android:label="@string/title_activity_weather_info"
+            android:parentActivityName="net.likelion.weatheralarm.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="net.likelion.weatheralarm.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
