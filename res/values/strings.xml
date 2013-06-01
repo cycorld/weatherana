@@ -9,7 +9,7 @@
     <string name="title_activity_popup">좋은 아침입니다 ^_^</string>
     <string name="title_activity_download">DownloadActivity</string>
     <string name="downloading_text">알람 파일을 다운로드 중입니다</string>
-    <string name="title_activity_info">InfoActivity</string>
+    <string name="title_activity_info">만든 사람들</string>
     <string name="play_text">알람 미리듣기</string>
     <string name="alarmtoggle">Alarm Toggle</string>
     <string name="alarmtoggle_text">알람 켜기/끄기</string>

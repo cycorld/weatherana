@@ -1,10 +1,5 @@
 package net.likelion.weatheralarm;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
@@ -24,7 +19,7 @@ public class Popup extends Activity {
 	private Button snooze_btn;
 	private int timer_remain = 300;
 	private CountDownTimer cdt;
-
+	String m4aSource = "http://weather.cycorld.com/data/today.m4a";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,19 +52,8 @@ public class Popup extends Activity {
 	        }  
 	    };  
 		Context context = getApplicationContext();
-		/*
-		try {
-			//URL url = new URL("http://choiyongchol.com/weatheralarm/data/source.xml");
-			//InputStream is = url.openStream();
-			
-		} catch (MalformedURLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
+		
+	
 		AudioManager am = (AudioManager) getApplicationContext()
 				.getSystemService(Context.AUDIO_SERVICE);
 		am.setStreamVolume(AudioManager.STREAM_MUSIC,
@@ -78,13 +62,13 @@ public class Popup extends Activity {
 
 		try {
 			if (mplay == null) {
-				mplay = new MySoundPlay(context, Uri.parse("http://choiyongchol.com/weatheralarm/data/today.m4a"));
+				mplay = new MySoundPlay(context, Uri.parse(m4aSource));
 			}
 
 			mplay.play();
 		} catch (Exception e) {
 			mplay = null;
-			mplay = new MySoundPlay(context, R.raw.a20130308);
+			mplay = new MySoundPlay(context, R.raw.nointernet);
 			timer_text.setText("좋은 아침입니다~! 인터넷 연결이 안되어 날씨 정보를 불러오지 못했습니다 ");
 			mplay.play();
 		}
@@ -107,7 +91,7 @@ public class Popup extends Activity {
 
 	public void onStopClicked(View view) {
 		cdt.cancel();
-		mplay.stop();
+		//mplay.stop();
 		mplay.end();
 		mplay = null;
 		finish();

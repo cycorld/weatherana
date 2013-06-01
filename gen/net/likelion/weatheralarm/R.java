@@ -24,8 +24,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
         public static final int popup=0x7f020001;
         public static final int profile=0x7f020002;
-        public static final int splash_image=0x7f020003;
-        public static final int weatherana_splash=0x7f020004;
+        public static final int weatherana_splash=0x7f020003;
     }
     public static final class id {
         public static final int action_settings=0x7f090011;
@@ -61,7 +60,7 @@ public final class R {
         public static final int weather_info=0x7f080003;
     }
     public static final class raw {
-        public static final int a20130308=0x7f040000;
+        public static final int nointernet=0x7f040000;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
