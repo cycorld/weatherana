@@ -19,7 +19,11 @@
         android:theme="@style/AppTheme" >
         <receiver
             android:name="net.likelion.weatheralarm.AlarmReceiver"
-            android:process=":remote" />
+            android:process=":remote" >
+        	<intent-filter>
+        	    <action android:name="net.likelion.weatheralarm.alarm" />
+        	</intent-filter>
+        </receiver>
         
         <receiver 
             android:name="net.likelion.weatheralarm.SetAlarmReboot"

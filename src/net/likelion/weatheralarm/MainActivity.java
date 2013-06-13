@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TimePicker;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class MainActivity extends Activity {
@@ -163,7 +164,7 @@ public class MainActivity extends Activity {
     	//Output.i(TAG_LOG, Integer.toString(set_time));
 
 		AlarmManager am = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-		Intent intent = new Intent(MainActivity.this, AlarmReceiver.class);
+		Intent intent = new Intent("net.likelion.weatheralarm.alarm");
 		PendingIntent sender = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
 		
 		int SECS = 1000;
@@ -177,6 +178,8 @@ public class MainActivity extends Activity {
 	    	am.cancel(sender);
 	    	sender.cancel();
 	    }		
+	    Context context = getApplicationContext();
+	    Toast.makeText(context, "날씨아나 알람이 등록되었습니다", Toast.LENGTH_LONG).show();
 		
 	}
 
