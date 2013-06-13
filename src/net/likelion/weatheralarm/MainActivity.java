@@ -174,12 +174,13 @@ public class MainActivity extends Activity {
 	    		am.setRepeating(AlarmManager.RTC_WAKEUP, set_time,  24 * 60 * MINS, sender);
 	    	else
 	    		am.setRepeating(AlarmManager.RTC_WAKEUP, set_time + 24 * 60 * MINS, 24 * 60 * MINS, sender);
+	    	Context context = getApplicationContext();
+		    Toast.makeText(context, "날씨아나 알람이 등록되었습니다", Toast.LENGTH_LONG).show();
 	    } else if(pref.getInt("alarmSet", -1) == 0) {
 	    	am.cancel(sender);
 	    	sender.cancel();
 	    }		
-	    Context context = getApplicationContext();
-	    Toast.makeText(context, "날씨아나 알람이 등록되었습니다", Toast.LENGTH_LONG).show();
+	    
 		
 	}
 
