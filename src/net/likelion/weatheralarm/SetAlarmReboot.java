@@ -32,30 +32,35 @@ public class SetAlarmReboot extends BroadcastReceiver {
 	    	//Output.i(TAG_LOG, stk.nextToken());
 	    	date = stk.nextToken() + " " + String.valueOf(hour) +":"+ String.valueOf(minute) +":"+"00";
 	    	Date dateType;
-			dateType = df.parse(date);
-	    	Long set_time = dateType.getTime();
+			try {
+				dateType = df.parse(date);
+				Long set_time = dateType.getTime();
+				AlarmManager am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+				Intent alarm = new Intent("net.likelion.weatheralarm.alarm");
+				PendingIntent sender = PendingIntent.getBroadcast(context, 0, alarm, 0);
+				
+				int SECS = 1000;
+			    int MINS = 60 * SECS;
+			    if(pref.getInt("alarmSet", -1) == 1) {
+			    	if(System.currentTimeMillis() < set_time)	// 오늘 이전 시간 설정시 한번 실행되는 기능 제 (테스트 필요)
+			    		am.setRepeating(AlarmManager.RTC_WAKEUP, set_time,  24 * 60 * MINS, sender);
+			    	else
+			    		am.setRepeating(AlarmManager.RTC_WAKEUP, set_time + 24 * 60 * MINS, 24 * 60 * MINS, sender);
+			    } else if(pref.getInt("alarmSet", -1) == 0) {
+			    	am.cancel(sender);
+			    	sender.cancel();
+			    }		
+				Toast.makeText(context, "날씨아나 알람이 재시작되었습니다", Toast.LENGTH_LONG).show();
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	
 	    	//Output.i(TAG_LOG, Integer.toString(set_time));
 	
-			AlarmManager am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-			Intent alarm = new Intent("net.likelion.weatheralarm.alarm");
-			PendingIntent sender = PendingIntent.getBroadcast(context, 0, alarm, 0);
 			
-			int SECS = 1000;
-		    int MINS = 60 * SECS;
-		    if(pref.getInt("alarmSet", -1) == 1) {
-		    	if(System.currentTimeMillis() < set_time)	// 오늘 이전 시간 설정시 한번 실행되는 기능 제 (테스트 필요)
-		    		am.setRepeating(AlarmManager.RTC_WAKEUP, set_time,  24 * 60 * MINS, sender);
-		    	else
-		    		am.setRepeating(AlarmManager.RTC_WAKEUP, set_time + 24 * 60 * MINS, 24 * 60 * MINS, sender);
-		    } else if(pref.getInt("alarmSet", -1) == 0) {
-		    	am.cancel(sender);
-		    	sender.cancel();
-		    }		
-	
-			}
-			Toast.makeText(context, "날씨아나 알람이 재시작되었습니다", Toast.LENGTH_LONG).show();
 
-	
+		}
 	
 		}
 
