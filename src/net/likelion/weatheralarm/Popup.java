@@ -7,11 +7,15 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.telephony.TelephonyManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Popup extends Activity {
 	private static MySoundPlay mplay = null;
@@ -20,11 +24,25 @@ public class Popup extends Activity {
 	private int timer_remain = 300;
 	private CountDownTimer cdt;
 	String m4aSource = "http://weather.cycorld.com/data/today.m4a";
+	WebView mWv;
+
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_popup);
+		//earlybird webview
+		TelephonyManager systemService = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        String PhoneNumber = systemService.getLine1Number();    //폰번호를 가져오는 겁니다..
+        PhoneNumber = PhoneNumber.substring(PhoneNumber.length()-10,PhoneNumber.length());
+        PhoneNumber="0"+PhoneNumber;
+        Toast.makeText(getApplicationContext(),PhoneNumber, Toast.LENGTH_SHORT).show();
+		
+        mWv= (WebView) findViewById(R.id.earlybird); 
+        mWv.getSettings().setJavaScriptEnabled(true);  // 웹뷰에서 자바스크립트실행가능
+        mWv.loadUrl("http://weather.cycorld.com/earlybird/?pn=" + PhoneNumber);  // 인터넷 경로 지정
+        mWv.setWebViewClient(new HelloWebViewClient());  // WebViewClient 지정 
 
 		// 이 부분이 바로 화면을 깨우는 부분 되시겠다.
 		// 화면이 잠겨있을 때 보여주기
@@ -74,6 +92,12 @@ public class Popup extends Activity {
 		}
 
 	}
+    private class HelloWebViewClient extends WebViewClient { //주소창 없앰 
+        public boolean shouldOverrideUrlLoading(WebView view, String url) { 
+            view.loadUrl(url); 
+            return true; 
+        } 
+    }
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if(keyCode == KeyEvent.KEYCODE_BACK){
 			return true;
