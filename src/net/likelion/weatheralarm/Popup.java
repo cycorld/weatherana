@@ -42,7 +42,7 @@ public class Popup extends Activity {
 		
         mWv = (WebView) findViewById(R.id.earlybird); 
         mWv.getSettings().setJavaScriptEnabled(true);  // 웹뷰에서 자바스크립트실행가능
-        mWv.loadUrl("http://weather.cycorld.com/earlybird/?f=check?pn=" + PhoneNumber);  // 인터넷 경로 지정
+        mWv.loadUrl("http://weather.cycorld.com/earlybird/?f=check&pn=" + PhoneNumber);  // 인터넷 경로 지정
         mWv.setWebViewClient(new HelloWebViewClient());  // WebViewClient 지정 
 
 		// 이 부분이 바로 화면을 깨우는 부분 되시겠다.
