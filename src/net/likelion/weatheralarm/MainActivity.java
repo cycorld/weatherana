@@ -1,5 +1,9 @@
 package net.likelion.weatheralarm;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -13,21 +17,33 @@ import android.app.PendingIntent.CanceledException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class MainActivity extends Activity {
 	private static final String       TAG_LOG                 = "MainActivity";
+	RelativeLayout layout;
 
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		//set background image
+		new DownloadImageTask().execute();
+		
+			
 		TimePicker tp = (TimePicker) findViewById(R.id.timePicker);		
 		tp.setIs24HourView(true);
 		Calendar now = Calendar.getInstance();
@@ -183,5 +199,38 @@ public class MainActivity extends Activity {
 	    
 		
 	}
+	
+	private class DownloadImageTask extends AsyncTask<Object, Object, Bitmap> {
+
+		@Override
+		protected Bitmap doInBackground(Object...objects) {
+	    	Log.d("bitmap", "hh");
+	    	Bitmap bitmap;
+			try {
+				bitmap = BitmapFactory.decodeStream((InputStream)new URL("http://weather.cycorld.com/data/good.png").getContent());
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.weatherana_splash);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.weatherana_splash);
+			}
+	    	layout = (RelativeLayout) findViewById(R.id.mainlayout);
+	    	 
+			Log.d("Bitmap", "will exit");
+	         return bitmap;
+		}
+	     protected void onPostExecute(Bitmap result) {
+	    	Log.d("exec", "post");
+	    	layout = (RelativeLayout) findViewById(R.id.mainlayout);
+	    	 
+			BitmapDrawable background = new BitmapDrawable(result);
+			layout.setBackgroundDrawable(background);
+			layout.getBackground().setAlpha(50);
+	     }
+
+	 }
 
 }

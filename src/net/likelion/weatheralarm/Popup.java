@@ -2,6 +2,7 @@ package net.likelion.weatheralarm;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -15,7 +16,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Popup extends Activity {
 	private static MySoundPlay mplay = null;
@@ -25,6 +25,7 @@ public class Popup extends Activity {
 	private CountDownTimer cdt;
 	String m4aSource = "http://weather.cycorld.com/data/today.m4a";
 	WebView mWv;
+	private static int currentVolume;
 
 
 
@@ -37,11 +38,11 @@ public class Popup extends Activity {
         String PhoneNumber = systemService.getLine1Number();    //폰번호를 가져오는 겁니다..
         PhoneNumber = PhoneNumber.substring(PhoneNumber.length()-10,PhoneNumber.length());
         PhoneNumber="0"+PhoneNumber;
-        Toast.makeText(getApplicationContext(),PhoneNumber, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),PhoneNumber, Toast.LENGTH_SHORT).show();
 		
-        mWv= (WebView) findViewById(R.id.earlybird); 
+        mWv = (WebView) findViewById(R.id.earlybird); 
         mWv.getSettings().setJavaScriptEnabled(true);  // 웹뷰에서 자바스크립트실행가능
-        mWv.loadUrl("http://weather.cycorld.com/earlybird/?pn=" + PhoneNumber);  // 인터넷 경로 지정
+        mWv.loadUrl("http://weather.cycorld.com/earlybird/?f=check?pn=" + PhoneNumber);  // 인터넷 경로 지정
         mWv.setWebViewClient(new HelloWebViewClient());  // WebViewClient 지정 
 
 		// 이 부분이 바로 화면을 깨우는 부분 되시겠다.
@@ -74,6 +75,7 @@ public class Popup extends Activity {
 	
 		AudioManager am = (AudioManager) getApplicationContext()
 				.getSystemService(Context.AUDIO_SERVICE);
+		currentVolume = am.getStreamVolume(AudioManager.STREAM_MUSIC);
 		am.setStreamVolume(AudioManager.STREAM_MUSIC,
 				(int) (am.getStreamMaxVolume(AudioManager.STREAM_MUSIC)),
 				AudioManager.FLAG_PLAY_SOUND);
@@ -94,10 +96,17 @@ public class Popup extends Activity {
 	}
     private class HelloWebViewClient extends WebViewClient { //주소창 없앰 
         public boolean shouldOverrideUrlLoading(WebView view, String url) { 
-            view.loadUrl(url); 
-            return true; 
-        } 
+    		if(url.startsWith("kakolink:")){
+    			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+    			startActivity(intent);
+    	      }
+    		else{
+    			view.loadUrl(url);
+    		}
+    		return true; 
+        }
     }
+
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if(keyCode == KeyEvent.KEYCODE_BACK){
 			return true;
@@ -119,6 +128,11 @@ public class Popup extends Activity {
 		mplay.end();
 		mplay = null;
 		finish();
+		AudioManager am = (AudioManager) getApplicationContext()
+				.getSystemService(Context.AUDIO_SERVICE);
+		am.setStreamVolume(AudioManager.STREAM_MUSIC,
+				currentVolume,
+				AudioManager.FLAG_PLAY_SOUND);
 	}
 
 	public class MySoundPlay {
