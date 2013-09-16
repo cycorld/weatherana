@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.likelion.weatheralarm"
-    android:versionCode="5"
-    android:versionName="1.3.1" >
+    android:versionCode="6"
+    android:versionName="1.4.0" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -47,6 +47,7 @@
         <activity
             android:name="net.likelion.weatheralarm.MainActivity"
             android:label="@string/title_activity_main"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
             android:screenOrientation="portrait" />
         <activity
             android:name="net.likelion.weatheralarm.Popup"

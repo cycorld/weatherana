@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		//set background image
-		new DownloadImageTask().execute();
+		//new DownloadImageTask().execute();
 		
 			
 		TimePicker tp = (TimePicker) findViewById(R.id.timePicker);		
